@@ -23,7 +23,7 @@ The small floating window is the widget. Closing the main window keeps the app r
 5. If the Mac instead says the app **"is damaged"**, open **Terminal** (Applications → Utilities) and run this line, then open the app again:
    `xattr -dr com.apple.quarantine "/Applications/Time Tracker.app"`
 
-The small floating window is the widget; it shows on every desktop. Closing the main window keeps the app running in the menu bar (the icons at the top right). Click the icon for its menu, where **Quit** really quits. Your tokens and keys are kept in your Mac's Keychain. After an update the Mac may ask once to let Time Tracker use them: type your Mac password and click **Always Allow**.
+The small floating window is the widget; it shows on every desktop. Closing the main window keeps the app running in the menu bar (the icons at the top right). Click the icon for its menu, where **Quit** really quits. Your tokens and keys are kept in your Mac's Keychain. After an update the Mac may ask once to let Time Tracker use them: type your Mac password and click **Always Allow**. Mac updates come in batches, so a Mac may stay on a version for a while when the Windows app gets small fixes.
 
 ## 2. Sign in
 
