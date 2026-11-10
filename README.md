@@ -1,16 +1,29 @@
 # Time Tracker: how to install it
 
-A Windows app for tracking your day, with a small always-on-top widget and your Notion tasks. Your account, data, Notion database and keys are your own: nobody shares anything with anybody. It takes about 15 minutes.
+An app for Windows and Mac for tracking your day, with a small always-on-top widget and your Notion tasks. Your account, data, Notion database and keys are your own: nobody shares anything with anybody. It takes about 15 minutes.
 
-**You need:** Windows 10 or 11, and an invitation (whoever gave you this page adds your email to the app's accounts, and adds you for Google Calendar if you want it). Everything else below is optional and can wait.
+**You need:** Windows 10 or 11, or a Mac with macOS 11 or later (Apple chip or Intel), and an invitation (whoever gave you this page adds your email to the app's accounts, and adds you for Google Calendar if you want it). Everything else below is optional and can wait.
 
 ## 1. Install
+
+### On Windows
 
 1. Download **[Time-Tracker-Setup.exe](https://github.com/albertlevicek-crypto/time-tracker-releases/releases/latest/download/Time-Tracker-Setup.exe)**.
 2. Run it. Windows will most likely show a blue window, **"Windows protected your PC"**, because the app isn't signed with a paid certificate. Click **More info**, then **Run anyway**.
 3. It installs for your Windows user only, with no administrator password, and opens by itself.
 
 The small floating window is the widget. Closing the main window keeps the app running in the tray (the small icons near the clock). To really quit: right-click the tray icon → **Quit**.
+
+### On a Mac
+
+1. Download **[Time-Tracker.dmg](https://github.com/albertlevicek-crypto/time-tracker-releases/releases/latest/download/Time-Tracker.dmg)** and open it.
+2. Drag **Time Tracker** onto the **Applications** folder, then open it from Applications.
+3. The Mac will most likely say **"Time Tracker" Not Opened** (Apple couldn't check it), because the app isn't signed with a paid Apple certificate. Click **Done** (not Move to Trash).
+4. Open **System Settings → Privacy & Security**, scroll down to **"Time Tracker" was blocked…**, click **Open Anyway**, and confirm with your password or Touch ID. Then **Open**. You do this once.
+5. If the Mac instead says the app **"is damaged"**, open **Terminal** (Applications → Utilities) and run this line, then open the app again:
+   `xattr -dr com.apple.quarantine "/Applications/Time Tracker.app"`
+
+The small floating window is the widget; it shows on every desktop. Closing the main window keeps the app running in the menu bar (the icons at the top right). Click the icon for its menu, where **Quit** really quits. Your tokens and keys are kept in your Mac's Keychain. After an update the Mac may ask once to let Time Tracker use them: type your Mac password and click **Always Allow**.
 
 ## 2. Sign in
 
@@ -27,13 +40,23 @@ Go to **Settings → Tools → Notion → Set up**. The app guides you and offer
 - **Connection (owner):** if you own the Notion workspace. It's the most private, because the connection only sees the database you share with it.
 - **Personal token (member):** if Notion doesn't let you create connections. The token acts as you, but the app only uses the database you pick. It expires after at most a year; then you make a new one. Notion shows the token only once, so paste it straight into the app.
 
-Then:
+Then, either:
+
+**A. Use your own task database**
 
 1. **Pick your task database.**
 2. **Map its fields.** Only the title and a **category** are required (a select, multi-select or status). Status, deadline, urgency, leverage, time estimate, actual time and assignee are optional: whatever you don't map simply stays out of the app, and nothing breaks.
 3. If your time estimates are labels the app can't read, it asks you what they mean. It never guesses.
 
-**What the app does in your Notion:** it reads the database you pick. It writes only three things: whether a task is done, its actual time (when you map those fields), and new tasks you track that aren't in Notion yet. It never changes or deletes anything else. The token is kept only in Windows Credential Manager.
+**B. Or let the app create one (recommended if your to-do list is a mess, or not in Notion)**
+
+1. Under the database list, click **Create a ready-made database**.
+2. Type your categories, the big areas of your life or work, separated by commas (for example `Work, Personal, Study`).
+3. Pick the Notion page it should go in. With a connection, first share that page with Time Tracker: open it in Notion, then **••• → Connections → + Add connection → Time Tracker**, and click **Refresh**.
+4. Click **Create database**. A database called "Tasks" appears in that page, with every field already set up. You can rename anything in Notion later.
+5. **Move your existing tasks (optional):** the app shows a ready request. Copy it into Claude (with its Notion connection) and Claude moves your tasks from your old list, from Notion or anywhere else. It shows you the list first, and never changes your old list. You then fill in urgency, leverage and estimates yourself. The request is always available later under **Settings → Notion → Move tasks in**.
+
+**What the app does in your Notion:** it reads the database you pick. It writes only three things: whether a task is done, its actual time (when you map those fields), and new tasks you track that aren't in Notion yet. If you ask for it, it also creates the ready-made database. It never changes or deletes anything else. The token is kept only in Windows Credential Manager, or the Keychain on a Mac.
 
 ## 4. Connect Google Calendar (optional)
 
@@ -64,7 +87,7 @@ Everything follows your account except your secrets, which take one code and one
 
 - A computer that already has its own token or key keeps it; nothing gets overwritten.
 - After a code, both computers use the same token. If you remove it in Notion or it expires, both stop until you connect again. To switch one computer off on its own, give it its own token under **Notion → Set up**.
-- Hotkeys, the widget's place and size, the computer's name and start with Windows stay on each computer.
+- Hotkeys, the widget's place and size, the computer's name and starting at sign-in stay on each computer.
 - **Actual time** in Notion is always the total of your blocks from all your computers; it's never added up twice. Mark Done and new tasks are sent once, from the computer where you did them. A computer that's offline catches up when it's back.
 
 ## Updates
@@ -77,8 +100,8 @@ Every update is checked against a signature before it installs. If one ever fail
 
 **Settings → Tools → Export** saves a CSV file in your Downloads folder, ready for Excel or Google Sheets. Nothing leaves your computer until you share the file yourself.
 
-- Double-click the file and it opens in columns, with Czech characters intact. The file uses the separators your Windows uses (a Czech PC: `;` and `,`; an English one: `,` and `.`).
-- To merge files from people with different Windows settings, use Excel's **Data → From Text/CSV** or Google Sheets' **File → Import**, which detect the separator.
+- Double-click the file and it opens in columns, with Czech characters intact. The file uses the separators your computer uses (Czech settings: `;` and `,`; English ones: `,` and `.`).
+- To merge files from people with different settings, use Excel's **Data → From Text/CSV** or Google Sheets' **File → Import**, which detect the separator.
 - A block belongs to the day it started in, whole. So two exports next to each other never count a block twice.
 
 ### Every block: one row each
@@ -117,11 +140,11 @@ Work time only, one row per period, category and leverage. The totals match the 
 
 ## Where your data lives
 
-- **On your computer:** an encrypted database. Your keys and tokens are in Windows Credential Manager.
+- **On your computer:** an encrypted database. Your keys and tokens are in Windows Credential Manager, or the Keychain on a Mac.
 - **In your account:** your blocks, goals and settings, so your computers stay in step. Your data is separated from everyone else's, but **whoever runs the server can technically see it**, as the app tells you at sign-in.
 - **Sent elsewhere:** nothing, apart from what you connect yourself (Notion, Google Calendar, and Claude if you turn it on).
 - The app never captures keystrokes, screenshots, your clipboard or page content.
 
 ## Uninstalling
 
-**Windows Settings → Apps → Installed apps → Time Tracker → Uninstall.** It also stops the app starting with Windows. To remove your data from this computer too, delete the folder shown under **Settings → About → Data folder**. To remove your account and what's in it, ask the person who invited you.
+**Windows:** Settings → Apps → Installed apps → Time Tracker → **Uninstall**. It also stops the app starting with Windows. **Mac:** first turn off **Settings → General → Open at login**, quit it from the menu bar, then drag **Time Tracker** from Applications to the Trash. To remove your data from this computer too, delete the folder shown under **Settings → About → Data folder**. To remove your account and what's in it, ask the person who invited you.
