@@ -138,11 +138,19 @@ Work time only, one row per period, category and leverage. The totals match the 
 | `deep work hours` | The part of it that's deep work |
 | `deep work sessions` | How many deep-work blocks. A Random tasks block with several tasks counts once, on its first task's row |
 
+### Sending your weekly summary to the person who invited you (optional)
+
+Under the export, **Send my weekly summary** is off until you turn it on. When it's on, every Monday last week's summary goes to the person who invited you: exactly the lines of the By week export above (hours per category and leverage, with deep work). **Never task names, notes or single blocks.**
+
+- **Send now** sends the days you chose above (by week if Every block is chosen) and replaces what you sent for them.
+- **Remove what I sent** deletes everything you've sent. Turning the switch off sends nothing more.
+- Only the people they've made readers can see your summaries; other colleagues can't. Your email is added by the server from your account.
+
 ## Where your data lives
 
 - **On your computer:** an encrypted database. Your keys and tokens are in Windows Credential Manager, or the Keychain on a Mac.
 - **In your account:** your blocks, goals and settings, so your computers stay in step. Your data is separated from everyone else's, but **whoever runs the server can technically see it**, as the app tells you at sign-in.
-- **Sent elsewhere:** nothing, apart from what you connect yourself (Notion, Google Calendar, and Claude if you turn it on).
+- **Sent elsewhere:** nothing, apart from what you connect yourself (Notion, Google Calendar, and Claude if you turn it on), and your weekly summary if you choose to send it.
 - The app never captures keystrokes, screenshots, your clipboard or page content.
 
 ## Uninstalling
